@@ -34,16 +34,17 @@ class Snake {
     /*
      Construtor do Objeto Snake(cobra)
 
-     - Configura a posição inicial
-     - Define o tamanho do Quadrado
-     - Define a cor da cobra
-     - Define a origem da cobra
-     - Define o quadrado na posição inicial
-     - Seta o mapa
-
-
+     - Configura a posição x e y inicial
+     - Define os controles 
+     - Define as constantes boltx e bolty( tamanho da janela divido por 20)
+     - Define a origem da cobra e do seu rastro
+     - Define o tamanho da cobra e do seu rastro
+     - Define a cor da cobra e da marca
+     - Inicializa o mapa (false em todas as posiçoes)
 
      */
+
+
     posx = window->getSize().x / 3;
     posy = window->getSize().y / 3;
 
@@ -60,9 +61,9 @@ class Snake {
     mark = criaRetangulo(10, 10, boltx, bolty);
 
     square.setFillColor(cor);
-    mark.setFillColor(Color(255, 100, 100));
+    mark.setFillColor(Color(150, 0, 255));
 
-    // Definicao matriz
+    // Inicialização da matriz de 20/20
 
     for (unsigned int y = 0; y < 20; y++) {
       vector<bool> yAxis;
@@ -74,91 +75,12 @@ class Snake {
     }
   }
 
-  void render(RenderWindow *window) {
-    /*
-     Retorna void
+  void render(RenderWindow *window);
 
-     - Desenha o quadrado na tela
-     */
+  void setMark();
 
-    for (unsigned int y = 0; y < this->grid.size(); y++) {
-      for (unsigned int x = 0; x < this->grid[y].size(); x++) {
-        if (grid[x][y]) {
-          mark.setPosition(Vector2f(boltx * x, bolty * y));
-
-          window->draw(mark);
-        }
-      }
-    }
-
-    window->draw(square);
-  }
-
-  void setMark() {
-    arrayPosX = posx / boltx;
-    arrayPosY = posy / bolty;
-
-    grid[arrayPosX][arrayPosY] = true;
-  }
-
-  void changePosition(RenderWindow *window) {
-    /*
-     Retorna void
-
-     - Altera o valor da posição X e Y
-     - Caso as posições sejam maiores que o tamanho da tela ou menores de que 0 a velocidade inverte
-     - Caso seja pressionado os botões cima, baixo, direita ou esquerda as velocidades se alteram
-
-     */
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-      vely = 0;
-      velx = -2;
-
-    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-      vely = 0;
-      velx = 2;
-    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-      vely = -2;
-      velx = 0;
-    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-      vely = 2;
-      velx = 0;
-    }
-
-    posx = posx + velx;
-    posy = posy + vely;
-
-    if (posx >= window->getSize().x) {
-      posx = window->getSize().x - 1;
-    }
-    if (posx <= 0) {
-      posx = 0;
-    }
-    if (posy >= window->getSize().y) {
-      posy = window->getSize().y - 1;
-    }
-    if (posy <= 0) {
-      posy = 0;
-    }
-
-    setMark();
-    square.setPosition(arrayPosX * boltx, arrayPosY * bolty);
-  }
+  void changePosition(RenderWindow *window);
 };
 
-RectangleShape criaRetangulo(int x, int y, int width, int height) {
-  RectangleShape rectangle(sf::Vector2f(width, height));
-
-  rectangle.setFillColor(sf::Color::Transparent);
-
-  rectangle.setOutlineColor(sf::Color::White);
-
-  rectangle.setOutlineThickness(1.0f);
-
-  rectangle.setPosition(x, y);
-
-  return rectangle;
-}
 
 #endif /* GAME_HPP_ */
