@@ -69,7 +69,7 @@ class Snake {
       vector<bool> yAxis;
 
       for (unsigned int x = 0; x < 20; x++) {
-        yAxis.push_back(false);
+        yAxis.push_back (false);
       }
       this->grid.push_back(yAxis);
     }
