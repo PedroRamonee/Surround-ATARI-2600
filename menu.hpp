@@ -32,18 +32,18 @@ class menu{
      - Carrega a fonte
 
      */
-    this->icon = icon.loadFromFile("icone.png");
+    this->icon = icon.loadFromFile("assets/icone.png");
 
-    this->background = background.loadFromFile("background.jpg");
+    this->background = background.loadFromFile("assets/background.jpg");
 
     this->positionx = window->getSize().x;
     this->positiony = window->getSize().y;
 
-    this->start = start.openFromFile("startdojogo.wav");
+    this->start = start.openFromFile("assets/startdojogo.wav");
 
-    this->music = music.openFromFile("menumusic.wav");
+    this->music = music.openFromFile("assets/menumusic.wav");
 
-    this->fonte = fonte.loadFromFile("design.graffiti.comicsansmsgras.ttf");
+    this->fonte = fonte.loadFromFile("assets/design.graffiti.comicsansmsgras.ttf");
     }
 };
 
