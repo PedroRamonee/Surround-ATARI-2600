@@ -1,12 +1,12 @@
 #include "game.hpp"
-#include "player.hpp"
 #include "menu.hpp"
+#include "start.hpp"
 
 int main() {
   RenderWindow window(VideoMode(700, 700), "SURROUND!!!");
 
-  PlayerOne cobra(&window, Color::Blue);
-  PlayerTwo cobra2(&window, Color::Red);
+  Start game(&window);
+
   Event event;
 
   while (window.isOpen()) {
@@ -16,13 +16,15 @@ int main() {
       }
     }
 
-    cobra.changePosition(&window);
-    cobra2.changePosition(&window);
+    
+    game.Update();
 
     window.clear();
-    cobra.render(&window);
-    cobra2.render(&window);
+
+    game.Draw();
+
     window.display();
+
     sleep(milliseconds(10.0f));
   }
   return 0 ;
