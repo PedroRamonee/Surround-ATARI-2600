@@ -1,6 +1,6 @@
-#include "game.hpp"
-#include "menu.hpp"
-#include "start.hpp"
+#include "src/game.hpp"
+#include "src/menu.hpp"
+#include "src/start.hpp"
 
 int main() {
   RenderWindow window(VideoMode(700, 700), "SURROUND!!!");
