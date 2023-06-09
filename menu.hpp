@@ -1,3 +1,4 @@
+/*
 #ifndef MENU_HPP_
 #define MENU_HPP_
 
@@ -31,7 +32,7 @@ class menu{
      - Carrega arquivos de música de music/start
      - Carrega a fonte
 
-     */
+     
     this->icon = icon.loadFromFile("assets/icone.png");
 
     this->background = background.loadFromFile("assets/background.jpg");
