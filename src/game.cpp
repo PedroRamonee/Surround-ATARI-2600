@@ -7,7 +7,6 @@
 
 #include "game.hpp"
 
-
 void Snake::render(RenderWindow *window){
 
     /*
@@ -16,6 +15,7 @@ void Snake::render(RenderWindow *window){
      - Desenha os quadrados na tela
      */
 
+    setBoard();
     
     for (unsigned int y = 0; y < this->grid.size(); y++) {
       for (unsigned int x = 0; x < this->grid[y].size(); x++) {
@@ -46,6 +46,17 @@ void Snake :: setMark() {
     arrayPosY = posy / bolty;
 
     grid[arrayPosX][arrayPosY] = true;
+  }
+
+  void Snake :: setBoard(){
+    for(int i = 0; i < 20; i++){
+      grid[i][0] = true;
+      grid[0][i] = true;
+      grid[i][19] = true;
+      grid[19][i] = true;
+    }
+  
+
   }
 
  RectangleShape criaRetangulo(int x, int y, int width, int height) {

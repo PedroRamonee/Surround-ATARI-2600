@@ -7,6 +7,7 @@ Start::Start(){
     this->cobra = new PlayerOne(&window, Color::Blue);
     this->cobra2 = new PlayerTwo(&window, Color::Red);
     
+    
 }
 
 Start::~Start(){

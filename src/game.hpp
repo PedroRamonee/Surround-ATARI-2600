@@ -35,6 +35,8 @@ class Snake {
 
   void setMark();
 
+  void setBoard();
+
 
 };
 
