@@ -59,7 +59,7 @@
      */
 
 
-    posx = window->getSize().x * 3 / 4;
+    posx = window->getSize().x / 4 * 3;
     posy = window->getSize().y / 2;
 
     square.setOrigin(100 / 2, 100 / 2);

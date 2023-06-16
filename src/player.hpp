@@ -1,3 +1,6 @@
+#ifndef PLAYER_HPP_
+#define PLAYER_HPP_
+
 #include "game.hpp"
 
 class PlayerOne : public Snake {
@@ -17,3 +20,5 @@ public:
       void changePosition(RenderWindow *window);
 
 };
+
+#endif
