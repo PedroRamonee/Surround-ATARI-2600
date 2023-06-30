@@ -16,7 +16,6 @@ public:
 
     Start();
     ~Start();
-    void Restart();
     void Update();
     void Draw();
     void runGame();

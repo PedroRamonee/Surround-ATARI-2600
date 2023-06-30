@@ -27,6 +27,8 @@ class Snake {
   int arrayPosX = 0, arrayPosY = 0;
   int boltx;
   int bolty;
+  int pisk= 100;
+  int f = 0;
   vector<vector<bool>> grid;
 
  public:

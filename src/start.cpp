@@ -3,23 +3,18 @@
 
 Start::Start(){
 
-    window.create(VideoMode(700, 700), "SURROUND!!!");
+    window.create(VideoMode(900, 900), "SURROUND!!!");
     this->cobra = new PlayerOne(&window, Color::Blue);
     this->cobra2 = new PlayerTwo(&window, Color::Red);
-    
+
     
 }
 
 Start::~Start(){
 
-}
-
-void Start:: Restart(){
-
-    window.create(VideoMode(700, 700), "SURROUND!!!");
-    this->cobra = new PlayerOne(&window, Color::Blue);
-    this->cobra2 = new PlayerTwo(&window, Color::Red);
-    
+    delete this->cobra;
+    delete this->cobra2;
+ 
 
 }
 
@@ -33,6 +28,8 @@ void Start::Draw() {
 
     cobra->render(&window);
     cobra2->render(&window);
+    
+    
 
 }
 

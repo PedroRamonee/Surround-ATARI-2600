@@ -49,11 +49,11 @@ void Snake :: setMark() {
   }
 
   void Snake :: setBoard(){
-    for(int i = 0; i < 20; i++){
+    for(int i = 0; i < 30; i++){
       grid[i][0] = true;
       grid[0][i] = true;
-      grid[i][19] = true;
-      grid[19][i] = true;
+      grid[i][29] = true;
+      grid[29][i] = true;
     }
   
 

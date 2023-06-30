@@ -1,5 +1,4 @@
 #include "player.hpp"
-
    PlayerOne::PlayerOne(RenderWindow *window, Color cor) {
     /*
      Construtor do Objeto 
@@ -23,8 +22,8 @@
     mark.setOrigin(100 / 2, 100 / 2);
     mark.setPosition(posx, posy);
 
-    boltx = (window->getSize().x / 20);
-    bolty = (window->getSize().y / 20);
+    boltx = (window->getSize().x / 30);
+    bolty = (window->getSize().y / 30);
 
     square = criaRetangulo(10, 10, boltx, bolty);
     mark = criaRetangulo(10, 10, boltx, bolty);
@@ -34,10 +33,10 @@
 
     // Inicialização da matriz de 20/20
 
-    for (unsigned int y = 0; y < 20; y++) {
+    for (unsigned int y = 0; y < 30; y++) {
       vector<bool> yAxis;
 
-      for (unsigned int x = 0; x < 20; x++) {
+      for (unsigned int x = 0; x < 30; x++) {
         yAxis.push_back (false);
       }
       this->grid.push_back(yAxis);
@@ -68,8 +67,8 @@
     mark.setOrigin(100 / 2, 100 / 2);
     mark.setPosition(posx, posy);
 
-    boltx = (window->getSize().x / 20);
-    bolty = (window->getSize().y / 20);
+    boltx = (window->getSize().x / 30);
+    bolty = (window->getSize().y / 30);
 
     square = criaRetangulo(10, 10, boltx, bolty);
     mark = criaRetangulo(10, 10, boltx, bolty);
@@ -79,10 +78,10 @@
 
     // Inicialização da matriz de 20/20
 
-    for (unsigned int y = 0; y < 20; y++) {
+    for (unsigned int y = 0; y < 30; y++) {
       vector<bool> yAxis;
 
-      for (unsigned int x = 0; x < 20; x++) {
+      for (unsigned int x = 0; x < 30; x++) {
         yAxis.push_back (false);
       }
       this->grid.push_back(yAxis);
@@ -100,10 +99,24 @@ void PlayerOne::changePosition(RenderWindow *window) {
      - Define a posição nova do quadrado
 
      */
+  if(sf::Keyboard::isKeyPressed){
+if(f % 2 == 0){
+  pisk++;
+  if(pisk == 255){
+    f++;
+  }
+}else{
+  pisk--;
+  if(pisk == 0){
+    f++;
+}
+}
+ 
+    mark.setFillColor(Color(10,10,pisk));
+
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
       vely = 0;
       velx = -2;
-
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
       vely = 0;
       velx = 2;
@@ -134,7 +147,7 @@ void PlayerOne::changePosition(RenderWindow *window) {
     if (posy <= 0) {
       posy = 0;
     }
-
+  }
     setMark();
     square.setPosition(arrayPosX * boltx, arrayPosY * bolty);
  }
@@ -149,6 +162,19 @@ void PlayerTwo::changePosition(RenderWindow *window) {
      - Define a posição nova do quadrado
 
      */
+if(sf::Keyboard::isKeyPressed){
+    if(f % 2 == 0){
+  pisk++;
+  if(pisk == 255){
+    f++;
+  }
+}else{
+  pisk--;
+  if(pisk == 0){
+    f++;
+}
+}       mark.setFillColor(Color(pisk,10,10));
+  
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
       vely = 0;
       velx = -2;
@@ -183,7 +209,7 @@ void PlayerTwo::changePosition(RenderWindow *window) {
     if (posy <= 0) {
       posy = 0;
     }
-
+}
     setMark();
     square.setPosition(arrayPosX * boltx, arrayPosY * bolty);
  }
