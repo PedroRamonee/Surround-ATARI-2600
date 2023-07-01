@@ -6,15 +6,15 @@
 
 class Start {
    private:
-    PlayerOne *cobra;
-    PlayerTwo *cobra2;
+   
     RenderWindow window;
+    int controller = 0;
 
    public:
     Start();
     ~Start();
-    void Update();
-    void Draw();
+    void Update(PlayerOne *cobra, PlayerTwo *cobra2);
+    void Draw( PlayerOne*cobra, PlayerTwo *cobra2);
     void runGame();
 };
 

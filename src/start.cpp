@@ -2,27 +2,27 @@
 
 Start::Start() {
     window.create(VideoMode(900, 900), "SURROUND!!!");
-    this->cobra = new PlayerOne(&window, Color::Blue);
-    this->cobra2 = new PlayerTwo(&window, Color::Red);
 }
 
 Start::~Start() {
-    delete this->cobra;
-    delete this->cobra2;
+  
 }
 
-void Start::Update() {
+void Start::Update(PlayerOne *cobra, PlayerTwo *cobra2) {
     cobra->changePosition(&window);
     cobra2->changePosition(&window);
 }
 
-void Start::Draw() {
+void Start::Draw(PlayerOne* cobra, PlayerTwo *cobra2) {
     cobra->render(&window);
     cobra2->render(&window);
 }
 
 void Start::runGame() {
-    Event event;
+    Event event;    
+
+    PlayerOne cobra(&window, Color::Blue);
+    PlayerTwo cobra2(&window, Color::Red);
 
     while (window.isOpen()) {
         while (window.pollEvent(event)) {
@@ -33,14 +33,26 @@ void Start::runGame() {
             }
         }
 
-        Update();
+        switch (controller) {
+            case 0:
+                Update(&cobra, &cobra2);
 
-        window.clear();
+                window.clear();
 
-        Draw();
+                Draw(&cobra, &cobra2);
 
-        window.display();
+                window.display();
+                sleep(milliseconds(10.0f));
+                break;
 
-        sleep(milliseconds(10.0f));
+            case 1:
+                
+
+                break;
+            
+            case 2:
+
+                break;
+        }
     }
 }
