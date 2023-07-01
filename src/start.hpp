@@ -4,16 +4,13 @@
 #include "game.hpp"
 #include "player.hpp"
 
-
-class Start{
-
-private:
+class Start {
+   private:
     PlayerOne *cobra;
     PlayerTwo *cobra2;
     RenderWindow window;
 
-public:
-
+   public:
     Start();
     ~Start();
     void Update();

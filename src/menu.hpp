@@ -12,7 +12,7 @@ using namespace sf;
 
 class menu{
     private:
-    
+
     Image icon;
     Image background;
     float positionx=0;
@@ -32,7 +32,7 @@ class menu{
      - Carrega arquivos de música de music/start
      - Carrega a fonte
 
-     
+
     this->icon = icon.loadFromFile("assets/icone.png");
 
     this->background = background.loadFromFile("assets/background.jpg");
@@ -44,7 +44,8 @@ class menu{
 
     this->music = music.openFromFile("assets/menumusic.wav");
 
-    this->fonte = fonte.loadFromFile("assets/design.graffiti.comicsansmsgras.ttf");
+    this->fonte =
+fonte.loadFromFile("assets/design.graffiti.comicsansmsgras.ttf");
     }
 };
 

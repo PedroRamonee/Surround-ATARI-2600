@@ -1,10 +1,10 @@
 #include "player.hpp"
-   PlayerOne::PlayerOne(RenderWindow *window, Color cor) {
+PlayerOne::PlayerOne(RenderWindow *window, Color cor) {
     /*
-     Construtor do Objeto 
+     Construtor do Objeto
 
      - Configura a posição x e y inicial
-     - Define os controles 
+     - Define os controles
      - Define as constantes boltx e bolty( tamanho da janela divido por 20)
      - Define a origem da cobra e do seu rastro
      - Define o tamanho da cobra e do seu rastro
@@ -13,8 +13,8 @@
 
      */
 
-    posx = window->getSize().x / 4;
-    posy = window->getSize().y / 2;
+    posx = rand() % window->getSize().x;
+    posy = rand() % window->getSize().y;
 
     square.setOrigin(100 / 2, 100 / 2);
     square.setPosition(posx, posy);
@@ -34,21 +34,21 @@
     // Inicialização da matriz de 20/20
 
     for (unsigned int y = 0; y < 30; y++) {
-      vector<bool> yAxis;
+        vector<bool> yAxis;
 
-      for (unsigned int x = 0; x < 30; x++) {
-        yAxis.push_back (false);
-      }
-      this->grid.push_back(yAxis);
+        for (unsigned int x = 0; x < 30; x++) {
+            yAxis.push_back(false);
+        }
+        this->grid.push_back(yAxis);
     }
-  }
+}
 
- PlayerTwo::PlayerTwo(RenderWindow *window, Color cor) {
+PlayerTwo::PlayerTwo(RenderWindow *window, Color cor) {
     /*
-     Construtor do Objeto 
+     Construtor do Objeto
 
      - Configura a posição x e y inicial
-     - Define os controles 
+     - Define os controles
      - Define as constantes boltx e bolty( tamanho da janela divido por 20)
      - Define a origem da cobra e do seu rastro
      - Define o tamanho da cobra e do seu rastro
@@ -57,9 +57,8 @@
 
      */
 
-
-    posx = window->getSize().x / 4 * 3;
-    posy = window->getSize().y / 2;
+    posx = rand() % window->getSize().x;
+    posy = rand() % window->getSize().y;
 
     square.setOrigin(100 / 2, 100 / 2);
     square.setPosition(posx, posy);
@@ -79,137 +78,139 @@
     // Inicialização da matriz de 20/20
 
     for (unsigned int y = 0; y < 30; y++) {
-      vector<bool> yAxis;
+        vector<bool> yAxis;
 
-      for (unsigned int x = 0; x < 30; x++) {
-        yAxis.push_back (false);
-      }
-      this->grid.push_back(yAxis);
+        for (unsigned int x = 0; x < 30; x++) {
+            yAxis.push_back(false);
+        }
+        this->grid.push_back(yAxis);
     }
-  }
-
+}
 
 void PlayerOne::changePosition(RenderWindow *window) {
     /*
      Retorna void
 
      - Altera o valor da posição X e Y
-     - Caso as posições sejam maiores que o tamanho da tela ou menores iguais a 0 a posição se altera 
-     - Caso seja pressionado os botões cima, baixo, direita ou esquerda as velocidades se alteram
+     - Caso as posições sejam maiores que o tamanho da tela ou menores iguais a
+     0 a posição se altera
+     - Caso seja pressionado os botões cima, baixo, direita ou esquerda as
+     velocidades se alteram
      - Define a posição nova do quadrado
 
      */
-  if(sf::Keyboard::isKeyPressed){
-if(f % 2 == 0){
-  pisk++;
-  if(pisk == 255){
-    f++;
-  }
-}else{
-  pisk--;
-  if(pisk == 0){
-    f++;
-}
-}
- 
-    mark.setFillColor(Color(10,10,pisk));
+    if (sf::Keyboard::isKeyPressed) {
+        if (f % 2 == 0) {
+            pisk++;
+            if (pisk == 255) {
+                f++;
+            }
+        } else {
+            pisk--;
+            if (pisk == 0) {
+                f++;
+            }
+        }
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-      vely = 0;
-      velx = -2;
-    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-      vely = 0;
-      velx = 2;
-    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-      vely = -2;
-      velx = 0;
-    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-      vely = 2;
-      velx = 0;
-    }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
-      vely = 0;
-      velx = 0;
-    }
+        mark.setFillColor(Color(10, 10, pisk));
 
-    posx = posx + velx;
-    posy = posy + vely;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+            vely = 0;
+            velx = -2;
+        } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+            vely = 0;
+            velx = 2;
+        } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+            vely = -2;
+            velx = 0;
+        } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+            vely = 2;
+            velx = 0;
+        } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+            vely = 0;
+            velx = 0;
+        }
 
-    if (posx >= window->getSize().x) {
-      posx = window->getSize().x - 1;
+        posx = posx + velx;
+        posy = posy + vely;
+
+        if (posx >= window->getSize().x) {
+            posx = window->getSize().x - 1;
+        }
+        if (posx <= 0) {
+            posx = 0;
+        }
+        if (posy >= window->getSize().y) {
+            posy = window->getSize().y - 1;
+        }
+        if (posy <= 0) {
+            posy = 0;
+        }
     }
-    if (posx <= 0) {
-      posx = 0;
-    }
-    if (posy >= window->getSize().y) {
-      posy = window->getSize().y - 1;
-    }
-    if (posy <= 0) {
-      posy = 0;
-    }
-  }
     setMark();
     square.setPosition(arrayPosX * boltx, arrayPosY * bolty);
- }
+}
 
 void PlayerTwo::changePosition(RenderWindow *window) {
     /*
      Retorna void
 
      - Altera o valor da posição X e Y
-     - Caso as posições sejam maiores que o tamanho da tela ou menores iguais a 0 a posição se altera 
-     - Caso seja pressionado os botões cima, baixo, direita ou esquerda as velocidades se alteram
+     - Caso as posições sejam maiores que o tamanho da tela ou menores iguais a
+     0 a posição se altera
+     - Caso seja pressionado os botões cima, baixo, direita ou esquerda as
+     velocidades se alteram
      - Define a posição nova do quadrado
 
      */
-if(sf::Keyboard::isKeyPressed){
-    if(f % 2 == 0){
-  pisk++;
-  if(pisk == 255){
-    f++;
-  }
-}else{
-  pisk--;
-  if(pisk == 0){
-    f++;
-}
-}       mark.setFillColor(Color(pisk,10,10));
-  
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-      vely = 0;
-      velx = -2;
+    if (sf::Keyboard::isKeyPressed) {
+        if (f % 2 == 0) {
+            pisk++;
+            if (pisk == 255) {
+                f++;
+            }
+        } else {
+            pisk--;
+            if (pisk == 0) {
+                f++;
+            }
+        }
+        mark.setFillColor(Color(pisk, 10, 10));
 
-    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-      vely = 0;
-      velx = 2;
-    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-      vely = -2;
-      velx = 0;
-    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-      vely = 2;
-      velx = 0;
-    }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
-      vely = 0;
-      velx = 0;
-    }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+            vely = 0;
+            velx = -2;
 
-    posx = posx + velx;
-    posy = posy + vely;
+        } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+            vely = 0;
+            velx = 2;
+        } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+            vely = -2;
+            velx = 0;
+        } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+            vely = 2;
+            velx = 0;
+        } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+            vely = 0;
+            velx = 0;
+        }
 
-    if (posx >= window->getSize().x) {
-      posx = window->getSize().x - 1;
+        posx = posx + velx;
+        posy = posy + vely;
+
+        if (posx >= window->getSize().x) {
+            posx = window->getSize().x - 1;
+        }
+        if (posx <= 0) {
+            posx = 0;
+        }
+        if (posy >= window->getSize().y) {
+            posy = window->getSize().y - 1;
+        }
+        if (posy <= 0) {
+            posy = 0;
+        }
     }
-    if (posx <= 0) {
-      posx = 0;
-    }
-    if (posy >= window->getSize().y) {
-      posy = window->getSize().y - 1;
-    }
-    if (posy <= 0) {
-      posy = 0;
-    }
-}
     setMark();
     square.setPosition(arrayPosX * boltx, arrayPosY * bolty);
- }
+}

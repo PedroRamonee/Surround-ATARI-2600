@@ -7,8 +7,7 @@
 
 #include "game.hpp"
 
-void Snake::render(RenderWindow *window){
-
+void Snake::render(RenderWindow *window) {
     /*
      Retorna void
 
@@ -16,61 +15,67 @@ void Snake::render(RenderWindow *window){
      */
 
     setBoard();
-    
-    for (unsigned int y = 0; y < this->grid.size(); y++) {
-      for (unsigned int x = 0; x < this->grid[y].size(); x++) {
-        if (grid[x][y]) {
-          mark.setPosition(Vector2f(boltx * x, bolty * y));
 
-          window->draw(mark);
+    for (unsigned int y = 0; y < this->grid.size(); y++) {
+        for (unsigned int x = 0; x < this->grid[y].size(); x++) {
+            if (grid[x][y]) {
+                mark.setPosition(Vector2f(boltx * x, bolty * y));
+
+                Color currentColor = mark.getFillColor();
+
+                if (x == 0 || x == 29 || y == 0 || y == 29) {
+                    mark.setFillColor(Color(0, 255, 0));
+                }
+
+                window->draw(mark);
+
+                mark.setFillColor(currentColor);
+            }
         }
-      }
     }
 
     window->draw(square);
-
 }
 
-void Snake :: setMark() {
+void Snake ::setMark() {
+    /*
+      Retorna void
 
-   /*
-     Retorna void
+      - Encontra a posição na matriz referente a posição na janela
+      - Define a posição como true
 
-     - Encontra a posição na matriz referente a posição na janela
-     - Define a posição como true
-
-     */
-
+      */
 
     arrayPosX = posx / boltx;
     arrayPosY = posy / bolty;
 
     grid[arrayPosX][arrayPosY] = true;
-  }
-
-  void Snake :: setBoard(){
-    for(int i = 0; i < 30; i++){
-      grid[i][0] = true;
-      grid[0][i] = true;
-      grid[i][29] = true;
-      grid[29][i] = true;
-    }
-  
-
-  }
-
- RectangleShape criaRetangulo(int x, int y, int width, int height) {
-  RectangleShape rectangle(sf::Vector2f(width, height));
-
-  rectangle.setFillColor(sf::Color::Transparent);
-
-  rectangle.setOutlineColor(sf::Color::White);
-
-  rectangle.setOutlineThickness(1.0f);
-
-  rectangle.setPosition(x, y);
-
-  return rectangle;
 }
 
+void Snake ::setBoard() {
+    board = criaRetangulo(10, 10, boltx, bolty);
+    board.setOrigin(100 / 2, 100 / 2);
+    board.setPosition(posx, posy);
+    board.setFillColor(Color::Green);
 
+    for (int i = 0; i < 30; i++) {
+        grid[i][0] = true;
+        grid[0][i] = true;
+        grid[i][29] = true;
+        grid[29][i] = true;
+    }
+}
+
+RectangleShape criaRetangulo(int x, int y, int width, int height) {
+    RectangleShape rectangle(sf::Vector2f(width, height));
+
+    rectangle.setFillColor(sf::Color::Transparent);
+
+    rectangle.setOutlineColor(sf::Color::White);
+
+    rectangle.setOutlineThickness(1.0f);
+
+    rectangle.setPosition(x, y);
+
+    return rectangle;
+}
