@@ -30,6 +30,7 @@ class Snake {
     int pisk = 100;
     int f = 0;
     vector<vector<bool>> grid;
+    bool end = false;
 
    public:
     void render(RenderWindow *window);
@@ -37,6 +38,10 @@ class Snake {
     void setMark();
 
     void setBoard();
+
+    bool returnEnd();
+
+    
 };
 
 #endif /* GAME_HPP_ */

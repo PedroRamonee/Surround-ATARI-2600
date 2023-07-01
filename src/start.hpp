@@ -8,13 +8,14 @@
 class Start {
    private:
     RenderWindow window;
-    int controller = 1;
+    int controller = 0;
 
    public:
     Start();
     ~Start();
     void Update(PlayerOne *cobra, PlayerTwo *cobra2);
     void Draw(PlayerOne *cobra, PlayerTwo *cobra2);
+    void Verify(PlayerOne *cobra, PlayerTwo *cobra2);
     void runGame();
 };
 

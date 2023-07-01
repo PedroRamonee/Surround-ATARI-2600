@@ -49,7 +49,11 @@ void Snake ::setMark() {
     arrayPosX = posx / boltx;
     arrayPosY = posy / bolty;
 
-    grid[arrayPosX][arrayPosY] = true;
+    if (grid[arrayPosX][arrayPosY] == false) {
+        grid[arrayPosX][arrayPosY] = true;
+    } else {
+        end = true;
+    }
 }
 
 void Snake ::setBoard() {
@@ -74,3 +78,6 @@ RectangleShape criaRetangulo(int x, int y, int width, int height) {
 
     return rectangle;
 }
+
+bool Snake ::returnEnd() { return end; }
+

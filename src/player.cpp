@@ -13,8 +13,8 @@ PlayerOne::PlayerOne(RenderWindow *window, Color cor) {
 
      */
 
-    posx = rand() % window->getSize().x;
-    posy = rand() % window->getSize().y;
+    posx = rand() % window->getSize().x ;
+    posy = rand() % window->getSize().y ;
 
     square.setOrigin(100 / 2, 100 / 2);
     square.setPosition(posx, posy);
@@ -57,8 +57,8 @@ PlayerTwo::PlayerTwo(RenderWindow *window, Color cor) {
 
      */
 
-    posx = rand() % window->getSize().x;
-    posy = rand() % window->getSize().y;
+    posx = rand() % window->getSize().x ;
+    posy = rand() % window->getSize().y ;
 
     square.setOrigin(100 / 2, 100 / 2);
     square.setPosition(posx, posy);
@@ -131,8 +131,8 @@ void PlayerOne::changePosition(RenderWindow *window) {
             velx = 0;
         }
 
-        posx = posx + velx;
-        posy = posy + vely;
+        posx += velx;
+        posy += vely;
 
         if (posx >= window->getSize().x) {
             posx = window->getSize().x - 1;
@@ -163,7 +163,7 @@ void PlayerTwo::changePosition(RenderWindow *window) {
      - Define a posição nova do quadrado
 
      */
-    if (sf::Keyboard::isKeyPressed) {
+    if (Keyboard::isKeyPressed) {
         if (f % 2 == 0) {
             pisk++;
             if (pisk == 255) {
