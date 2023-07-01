@@ -23,7 +23,6 @@ class Snake {
     int velx = 0, vely = 0;
     RectangleShape square;
     RectangleShape mark;
-    RectangleShape board;
     int posx = 0, posy = 0;
     int arrayPosX = 0, arrayPosY = 0;
     int boltx;

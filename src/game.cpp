@@ -53,11 +53,6 @@ void Snake ::setMark() {
 }
 
 void Snake ::setBoard() {
-    board = criaRetangulo(10, 10, boltx, bolty);
-    board.setOrigin(100 / 2, 100 / 2);
-    board.setPosition(posx, posy);
-    board.setFillColor(Color::Green);
-
     for (int i = 0; i < 30; i++) {
         grid[i][0] = true;
         grid[0][i] = true;
