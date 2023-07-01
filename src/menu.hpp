@@ -12,11 +12,19 @@ class menu {
     float positiony = 0;
     Music start;
     Music music;
-    Font fonte;
+    Music inicio;
+    Texture marca;
+    RectangleShape botao[3];
+    int count = 0;
+    Clock relogio;
+    Texture credito;
+    Texture number[5];
 
    public:
     menu(RenderWindow *window);
     void background(RenderWindow *window);
+    void botaum(RenderWindow *window,int *control);
+    void creditos(RenderWindow *window, int *control);
 };
 
 #endif  // MENU_HPP_

@@ -1,4 +1,5 @@
 #include "player.hpp"
+
 PlayerOne::PlayerOne(RenderWindow *window, Color cor) {
     /*
      Construtor do Objeto
@@ -131,8 +132,8 @@ void PlayerOne::changePosition(RenderWindow *window) {
             velx = 0;
         }
 
-        posx += velx;
-        posy += vely;
+        posx = posx + velx;
+        posy = posy + vely;
 
         if (posx >= window->getSize().x) {
             posx = window->getSize().x - 1;
@@ -158,12 +159,12 @@ void PlayerTwo::changePosition(RenderWindow *window) {
      - Altera o valor da posição X e Y
      - Caso as posições sejam maiores que o tamanho da tela ou menores iguais a
      0 a posição se altera
-     - Caso seja pressionado os botões W, A, D ou S as
+     - Caso seja pressionado os botões cima, baixo, direita ou esquerda as
      velocidades se alteram
      - Define a posição nova do quadrado
 
      */
-    if (Keyboard::isKeyPressed) {
+    if (sf::Keyboard::isKeyPressed) {
         if (f % 2 == 0) {
             pisk++;
             if (pisk == 255) {
@@ -195,8 +196,8 @@ void PlayerTwo::changePosition(RenderWindow *window) {
             velx = 0;
         }
 
-        posx += velx;
-        posy += vely;
+        posx = posx + velx;
+        posy = posy + vely;
 
         if (posx >= window->getSize().x) {
             posx = window->getSize().x - 1;
