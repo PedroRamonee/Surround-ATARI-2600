@@ -13,11 +13,6 @@ void Start::Draw(PlayerOne *cobra, PlayerTwo *cobra2) {
     cobra->render(&window);
     cobra2->render(&window);
 }
-void Start::Verify(PlayerOne *cobra, PlayerTwo *cobra2) {
-    if (cobra->returnEnd() || cobra2->returnEnd()) {
-        controller = 1;
-    }
-}
 
 void Start::runGame() {
     Event event;
@@ -39,15 +34,13 @@ void Start::runGame() {
         switch (controller) {
             case 0:
 
-                Update(&cobra, &cobra2);
-
-                window.clear();
+                         window.clear();
 
                 Draw(&cobra, &cobra2);
 
                 window.display();
 
-                // Verify(&cobra, &cobra2);
+                Update(&cobra, &cobra2);
 
                 sleep(milliseconds(10.0f));
 

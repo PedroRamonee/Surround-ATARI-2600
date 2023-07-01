@@ -15,7 +15,6 @@ class Start {
     ~Start();
     void Update(PlayerOne *cobra, PlayerTwo *cobra2);
     void Draw(PlayerOne *cobra, PlayerTwo *cobra2);
-    void Verify(PlayerOne *cobra, PlayerTwo *cobra2);
     void runGame();
 };
 

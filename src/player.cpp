@@ -13,8 +13,8 @@ PlayerOne::PlayerOne(RenderWindow *window, Color cor) {
 
      */
 
-    posx = rand() % window->getSize().x ;
-    posy = rand() % window->getSize().y ;
+    posx = rand() % window->getSize().x;
+    posy = rand() % window->getSize().y;
 
     square.setOrigin(100 / 2, 100 / 2);
     square.setPosition(posx, posy);
@@ -57,8 +57,8 @@ PlayerTwo::PlayerTwo(RenderWindow *window, Color cor) {
 
      */
 
-    posx = rand() % window->getSize().x ;
-    posy = rand() % window->getSize().y ;
+    posx = rand() % window->getSize().x;
+    posy = rand() % window->getSize().y;
 
     square.setOrigin(100 / 2, 100 / 2);
     square.setPosition(posx, posy);
@@ -158,7 +158,7 @@ void PlayerTwo::changePosition(RenderWindow *window) {
      - Altera o valor da posição X e Y
      - Caso as posições sejam maiores que o tamanho da tela ou menores iguais a
      0 a posição se altera
-     - Caso seja pressionado os botões cima, baixo, direita ou esquerda as
+     - Caso seja pressionado os botões W, A, D ou S as
      velocidades se alteram
      - Define a posição nova do quadrado
 
@@ -195,8 +195,8 @@ void PlayerTwo::changePosition(RenderWindow *window) {
             velx = 0;
         }
 
-        posx = posx + velx;
-        posy = posy + vely;
+        posx += velx;
+        posy += vely;
 
         if (posx >= window->getSize().x) {
             posx = window->getSize().x - 1;
