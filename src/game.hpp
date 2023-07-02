@@ -20,11 +20,14 @@ RectangleShape criaRetangulo(int x, int y, int width, int height);
 
 class Snake {
    protected:
-    int velx = 0, vely = 0;
+    int velx = 0;
+    int vely = 0;
     RectangleShape square;
     RectangleShape mark;
-    int posx = 0, posy = 0;
-    int arrayPosX = 0, arrayPosY = 0;
+    int posx = 0;
+    int posy = 0;
+    int arrayPosX = 0;
+    int arrayPosY = 0;
     int boltx;
     int bolty;
     int pisk = 100;

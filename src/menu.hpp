@@ -25,7 +25,7 @@ class menu {
    public:
     menu(RenderWindow *window);
     void background(RenderWindow *window);
-    void botaum(RenderWindow *window,int *control);
+    void botaum(RenderWindow *window, int *control);
     void creditos(RenderWindow *window, int *control);
 };
 
