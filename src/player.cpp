@@ -17,6 +17,17 @@ PlayerOne::PlayerOne(RenderWindow *window, Color cor) {
     posx = rand() % window->getSize().x;
     posy = rand() % window->getSize().y;
 
+    if (posx == 0) {
+        posx++;
+    } else if (posx == 29) {
+        posx--;
+    }
+    if (posy == 0) {
+        posy++;
+    } else if (posy == 29) {
+        posy--;
+    }
+
     square.setOrigin(100 / 2, 100 / 2);
     square.setPosition(posx, posy);
 
@@ -60,6 +71,17 @@ PlayerTwo::PlayerTwo(RenderWindow *window, Color cor) {
 
     posx = rand() % window->getSize().x;
     posy = rand() % window->getSize().y;
+
+    if (posx == 0) {
+        posx++;
+    } else if (posx == 29) {
+        posx--;
+    }
+    if (posy == 0) {
+        posy++;
+    } else if (posy == 29) {
+        posy--;
+    }
 
     square.setOrigin(100 / 2, 100 / 2);
     square.setPosition(posx, posy);
