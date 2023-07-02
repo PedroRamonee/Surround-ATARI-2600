@@ -37,7 +37,7 @@ void Start::runGame() {
                 window.clear();
                 Draw(&cobra, &cobra2);
                 window.display();
-                sleep(milliseconds(10.0f));
+                sleep(milliseconds(100.0f));
                 break;
 
             case 1:

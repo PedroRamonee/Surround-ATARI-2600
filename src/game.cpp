@@ -49,7 +49,12 @@ void Snake ::setMark() {
     arrayPosX = posx / boltx;
     arrayPosY = posy / bolty;
 
-    grid[arrayPosX][arrayPosY] = true;
+    if (grid[arrayPosX][arrayPosY] == false) {
+        grid[arrayPosX][arrayPosY] = true;
+    } else {
+        velx = 0;
+        vely = 0;
+    }
 }
 
 void Snake ::setBoard() {
