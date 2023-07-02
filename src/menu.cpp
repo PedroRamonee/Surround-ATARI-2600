@@ -7,8 +7,11 @@ menu::menu(RenderWindow *window) {
      - Carrega arquivos de música de music/start
      - Carrega a fonte*/ 
 
+    this->altura = 20;
+
     this->inicio.openFromFile("assets/inicio.wav");
     inicio.play();
+    inicio.setVolume(altura);
 
     this->marca.loadFromFile("assets/marca.jpg");
     Sprite spritemarca;
@@ -31,6 +34,7 @@ menu::menu(RenderWindow *window) {
 
     this->music.openFromFile("assets/menumusic.wav");
     music.play();
+    music.setVolume(altura);
     music.setLoop(true);
 
     this->credito.loadFromFile("assets/creditos.jpg");
@@ -40,6 +44,8 @@ menu::menu(RenderWindow *window) {
     this->number[2].loadFromFile("assets/3.jpg");
     this->number[3].loadFromFile("assets/4.jpg");
     this->number[4].loadFromFile("assets/5.jpg");
+
+    this->tema.openFromFile("assets/ingame.wav");
 
 }
 void menu::background(RenderWindow *window) {
@@ -103,6 +109,7 @@ void menu::botaum(RenderWindow *window,int *control){
         *control=0;
         music.pause();
         start.play();
+        start.setVolume(altura);
         for(int i=0;i<5;i++){
             Sprite numero;
             numero.setTexture(number[i]);
@@ -110,6 +117,9 @@ void menu::botaum(RenderWindow *window,int *control){
              window->display();
              sleep(seconds(1.0f));
         }
+        tema.play();
+        tema.setLoop(true);
+        tema.setVolume(altura);
         break;
         case 1:
         *control=2;

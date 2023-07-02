@@ -19,6 +19,8 @@ class menu {
     Clock relogio;
     Texture credito;
     Texture number[5];
+    Music tema;
+    float altura;
 
    public:
     menu(RenderWindow *window);
