@@ -19,12 +19,12 @@ PlayerOne::PlayerOne(RenderWindow *window, Color cor) {
 
     if (posx == 0) {
         posx++;
-    } else if (posx == window->getSize().x) {
+    } else if (posx == window->getSize().x - 1) {
         posx--;
     }
     if (posy == 0) {
         posy++;
-    } else if (posy == window->getSize().y) {
+    } else if (posy == window->getSize().y - 1) {
         posy--;
     }
 
@@ -74,12 +74,12 @@ PlayerTwo::PlayerTwo(RenderWindow *window, Color cor) {
 
     if (posx == 0) {
         posx++;
-    } else if (posx == window->getSize().x) {
+    } else if (posx == window->getSize().x - 1) {
         posx--;
     }
     if (posy == 0) {
         posy++;
-    } else if (posy == window->getSize().y) {
+    } else if (posy == window->getSize().y - 1) {
         posy--;
     }
 
