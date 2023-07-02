@@ -5,8 +5,8 @@ Start::Start() { window.create(VideoMode(900, 900), "SURROUND!!!"); }
 Start::~Start() {}
 
 void Start::Update(PlayerOne *cobra, PlayerTwo *cobra2) {
-    cobra->changePosition(&window);
-    cobra2->changePosition(&window);
+    cobra->changePosition(&window, cobra2->returnGrid());
+    cobra2->changePosition(&window, cobra->returnGrid());
 }
 
 void Start::Draw(PlayerOne *cobra, PlayerTwo *cobra2) {
@@ -33,11 +33,11 @@ void Start::runGame() {
 
         switch (controller) {
             case 0:
+
                 Update(&cobra, &cobra2);
                 window.clear();
                 Draw(&cobra, &cobra2);
                 window.display();
-                sleep(seconds(0.1f));
                 break;
 
             case 1:

@@ -33,13 +33,16 @@ class Snake {
     int pisk = 100;
     int f = 0;
     vector<vector<bool>> grid;
+    Clock clock;
 
    public:
     void render(RenderWindow *window);
 
-    void setMark();
+    void setMark(vector<vector<bool>> grid);
 
     void setBoard();
+
+    vector<vector<bool>> returnGrid();
 };
 
 #endif /* GAME_HPP_ */

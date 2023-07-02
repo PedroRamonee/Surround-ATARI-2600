@@ -37,7 +37,7 @@ void Snake::render(RenderWindow *window) {
     window->draw(square);
 }
 
-void Snake ::setMark() {
+void Snake::setMark(vector<vector<bool>> grid) {
     /*
       Retorna void
 
@@ -49,8 +49,9 @@ void Snake ::setMark() {
     arrayPosX = posx / boltx;
     arrayPosY = posy / bolty;
 
-    if (grid[arrayPosX][arrayPosY] == false) {
-        grid[arrayPosX][arrayPosY] = true;
+    if (this->grid[arrayPosX][arrayPosY] == false &&
+        grid[arrayPosX][arrayPosY] == false) {
+        this->grid[arrayPosX][arrayPosY] = true;
     } else {
         velx = 0;
         vely = 0;
@@ -79,3 +80,5 @@ RectangleShape criaRetangulo(int x, int y, int width, int height) {
 
     return rectangle;
 }
+
+vector<vector<bool>> Snake ::returnGrid() { return grid; }

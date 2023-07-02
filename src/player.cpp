@@ -109,7 +109,8 @@ PlayerTwo::PlayerTwo(RenderWindow *window, Color cor) {
     }
 }
 
-void PlayerOne::changePosition(RenderWindow *window) {
+void PlayerOne::changePosition(RenderWindow *window,
+                               vector<vector<bool>> grid) {
     /*
      Retorna void
 
@@ -122,23 +123,10 @@ void PlayerOne::changePosition(RenderWindow *window) {
 
      */
 
-    if (f % 2 == 0) {
-        pisk = pisk + 5;
-        if (pisk >= 255) {
-            f++;
-        }
-    } else {
-        pisk = pisk - 5;
-        if (pisk <= 0) {
-            f++;
-        }
-    }
-
-    mark.setFillColor(Color(10, 10, pisk));
-
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
         vely = 0;
         velx = -30;
+
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
         vely = 0;
         velx = 30;
@@ -153,27 +141,45 @@ void PlayerOne::changePosition(RenderWindow *window) {
         velx = 0;
     }
 
-    posx += velx;
-    posy += vely;
+    if (clock.getElapsedTime().asSeconds() > 0.2) {
+        posx += velx;
+        posy += vely;
 
-    if (posx >= window->getSize().x) {
-        posx = window->getSize().x - 1;
-    }
-    if (posx <= 0) {
-        posx = 0;
-    }
-    if (posy >= window->getSize().y) {
-        posy = window->getSize().y - 1;
-    }
-    if (posy <= 0) {
-        posy = 0;
-    }
+        if (posx >= window->getSize().x) {
+            posx = window->getSize().x - 1;
+        }
+        if (posx <= 0) {
+            posx = 0;
+        }
+        if (posy >= window->getSize().y) {
+            posy = window->getSize().y - 1;
+        }
+        if (posy <= 0) {
+            posy = 0;
+        }
 
-    setMark();
-    square.setPosition(arrayPosX * boltx, arrayPosY * bolty);
+        setMark(grid);
+        square.setPosition(arrayPosX * boltx, arrayPosY * bolty);
+
+        if (f % 2 == 0) {
+            pisk = pisk + 5;
+            if (pisk >= 255) {
+                f++;
+            }
+        } else {
+            pisk = pisk - 5;
+            if (pisk <= 0) {
+                f++;
+            }
+        }
+
+        mark.setFillColor(Color(10, 10, pisk));
+        clock.restart();
+    }
 }
 
-void PlayerTwo::changePosition(RenderWindow *window) {
+void PlayerTwo::changePosition(RenderWindow *window,
+                               vector<vector<bool>> grid) {
     /*
      Retorna void
 
@@ -185,19 +191,6 @@ void PlayerTwo::changePosition(RenderWindow *window) {
      - Define a posição nova do quadrado
 
      */
-
-    if (f % 2 == 0) {
-        pisk = pisk + 5;
-        if (pisk >= 255) {
-            f++;
-        }
-    } else {
-        pisk = pisk - 5;
-        if (pisk <= 0) {
-            f++;
-        }
-    }
-    mark.setFillColor(Color(pisk, 10, 10));
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
         vely = 0;
@@ -217,22 +210,39 @@ void PlayerTwo::changePosition(RenderWindow *window) {
         velx = 0;
     }
 
-    posx += velx;
-    posy += vely;
+    if (clock.getElapsedTime().asSeconds() > 0.2) {
+        posx += velx;
+        posy += vely;
 
-    if (posx >= window->getSize().x) {
-        posx = window->getSize().x - 1;
-    }
-    if (posx <= 0) {
-        posx = 0;
-    }
-    if (posy >= window->getSize().y) {
-        posy = window->getSize().y - 1;
-    }
-    if (posy <= 0) {
-        posy = 0;
-    }
+        if (posx >= window->getSize().x) {
+            posx = window->getSize().x - 1;
+        }
+        if (posx <= 0) {
+            posx = 0;
+        }
+        if (posy >= window->getSize().y) {
+            posy = window->getSize().y - 1;
+        }
+        if (posy <= 0) {
+            posy = 0;
+        }
 
-    setMark();
-    square.setPosition(arrayPosX * boltx, arrayPosY * bolty);
+        setMark(grid);
+        square.setPosition(arrayPosX * boltx, arrayPosY * bolty);
+
+        if (f % 2 == 0) {
+            pisk = pisk + 5;
+            if (pisk >= 255) {
+                f++;
+            }
+        } else {
+            pisk = pisk - 5;
+            if (pisk <= 0) {
+                f++;
+            }
+        }
+
+        mark.setFillColor(Color(pisk, 10, 10));
+        clock.restart();
+    }
 }
