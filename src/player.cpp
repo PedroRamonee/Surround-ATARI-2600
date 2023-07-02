@@ -13,28 +13,23 @@ PlayerOne::PlayerOne(RenderWindow *window, Color cor) {
      - Inicializa o mapa (false em todas as posiçoes)
 
      */
+    boltx = (window->getSize().x / 30);
+    bolty = (window->getSize().y / 30);
 
-    posx = rand() % window->getSize().x + 1;
-    posy = rand() % window->getSize().y + 1;
+    posx = rand() % (window->getSize().x - boltx) + boltx;
+    posy = rand() % (window->getSize().y - bolty) + bolty;
 
     if (posx == window->getSize().x) {
-        posx = posx - (window->getSize().x / 2);
-    } else if (posx > window->getSize().x) {
-        posx = posx - (window->getSize().x / 4);
+        posx -= boltx;
     }
     if (posy == window->getSize().y) {
-        posy = posy - (window->getSize().y / 2);
-    } else if (posy > window->getSize().y) {
-        posy = posy - (window->getSize().y / 4);
+        posy -= bolty;
     }
     square.setOrigin(100 / 2, 100 / 2);
     square.setPosition(posx, posy);
 
     mark.setOrigin(100 / 2, 100 / 2);
     mark.setPosition(posx, posy);
-
-    boltx = (window->getSize().x / 30);
-    bolty = (window->getSize().y / 30);
 
     square = criaRetangulo(10, 10, boltx, bolty);
     mark = criaRetangulo(10, 10, boltx, bolty);
@@ -68,28 +63,23 @@ PlayerTwo::PlayerTwo(RenderWindow *window, Color cor) {
 
      */
 
-    posx = rand() % window->getSize().x + 1;
-    posy = rand() % window->getSize().y + 1;
+    boltx = (window->getSize().x / 30);
+    bolty = (window->getSize().y / 30);
 
-    if (posx == 0) {
-        posx++;
-    } else if (posx == window->getSize().x - 1) {
-        posx--;
-    }
-    if (posy == 0) {
-        posy++;
-    } else if (posy == window->getSize().y - 1) {
-        posy--;
-    }
+    posx = rand() % (window->getSize().x - boltx) + boltx;
+    posy = rand() % (window->getSize().y - bolty) + bolty;
 
+    if (posx == window->getSize().x) {
+        posx -= boltx;
+    }
+    if (posy == window->getSize().y) {
+        posy -= bolty;
+    }
     square.setOrigin(100 / 2, 100 / 2);
     square.setPosition(posx, posy);
 
     mark.setOrigin(100 / 2, 100 / 2);
     mark.setPosition(posx, posy);
-
-    boltx = (window->getSize().x / 30);
-    bolty = (window->getSize().y / 30);
 
     square = criaRetangulo(10, 10, boltx, bolty);
     mark = criaRetangulo(10, 10, boltx, bolty);
