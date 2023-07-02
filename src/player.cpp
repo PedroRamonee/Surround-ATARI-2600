@@ -123,13 +123,13 @@ void PlayerOne::changePosition(RenderWindow *window) {
      */
 
     if (f % 2 == 0) {
-        pisk++;
-        if (pisk == 255) {
+        pisk = pisk + 5;
+        if (pisk >= 255) {
             f++;
         }
     } else {
-        pisk--;
-        if (pisk == 0) {
+        pisk = pisk - 5;
+        if (pisk <= 0) {
             f++;
         }
     }
@@ -187,13 +187,13 @@ void PlayerTwo::changePosition(RenderWindow *window) {
      */
 
     if (f % 2 == 0) {
-        pisk++;
-        if (pisk == 255) {
+        pisk = pisk + 5;
+        if (pisk >= 255) {
             f++;
         }
     } else {
-        pisk--;
-        if (pisk == 0) {
+        pisk = pisk - 5;
+        if (pisk <= 0) {
             f++;
         }
     }
