@@ -16,8 +16,8 @@ PlayerOne::PlayerOne(RenderWindow *window, Color cor) {
     boltx = (window->getSize().x / 30);
     bolty = (window->getSize().y / 30);
 
-    posx = rand() % (window->getSize().x - boltx) + boltx;
-    posy = rand() % (window->getSize().y - bolty) + bolty;
+    posx = rand() % (window->getSize().x - 2 * boltx) + boltx;
+    posy = rand() % (window->getSize().y - 2 * bolty) + bolty;
 
     if (posx == window->getSize().x) {
         posx -= boltx;
@@ -66,8 +66,8 @@ PlayerTwo::PlayerTwo(RenderWindow *window, Color cor) {
     boltx = (window->getSize().x / 30);
     bolty = (window->getSize().y / 30);
 
-    posx = rand() % (window->getSize().x - boltx) + boltx;
-    posy = rand() % (window->getSize().y - bolty) + bolty;
+    posx = rand() % (window->getSize().x - 2 * boltx) + boltx;
+    posy = rand() % (window->getSize().y - 2 * bolty) + bolty;
 
     if (posx == window->getSize().x) {
         posx -= boltx;
@@ -129,6 +129,8 @@ void PlayerOne::changePosition(RenderWindow *window,
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
         vely = 0;
         velx = 0;
+    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+        window->close();
     }
 
     if (clock.getElapsedTime().asSeconds() > 0.2) {
@@ -198,6 +200,8 @@ void PlayerTwo::changePosition(RenderWindow *window,
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
         vely = 0;
         velx = 0;
+    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+        window->close();
     }
 
     if (clock.getElapsedTime().asSeconds() > 0.2) {
