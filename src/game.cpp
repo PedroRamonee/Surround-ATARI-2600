@@ -54,11 +54,7 @@ void Snake::setMark(vector<vector<bool>> grid, bool *end) {
         this->grid[arrayPosX][arrayPosY] = true;
     } else {
         if (posx != startPosX || posy != startPosY) {
-
             *end = true;
-            velx = 0;
-            vely = 0;
-
         }
     }
 }
@@ -87,3 +83,33 @@ RectangleShape criaRetangulo(int x, int y, int width, int height) {
 }
 
 vector<vector<bool>> Snake ::returnGrid() { return grid; }
+
+void Snake ::resetGrid() {
+    for (unsigned int y = 0; y < this->grid.size(); y++) {
+        for (unsigned int x = 0; x < this->grid[y].size(); x++) {
+            if (grid[x][y]) {
+                grid[x][y] = false;
+            }
+        }
+    }
+}
+
+void Snake ::posReset(RenderWindow *window) {
+    posx = rand() % (window->getSize().x - 2 * boltx) + boltx;
+    posy = rand() % (window->getSize().y - 2 * bolty) + bolty;
+
+    if (posx == window->getSize().x) {
+        posx -= boltx;
+    }
+    if (posy == window->getSize().y) {
+        posy -= bolty;
+    }
+
+    startPosX = posx;
+    startPosY = posy;
+}
+
+void Snake ::pauseSpeed() {
+    velx = 0;
+    vely = 0;
+}

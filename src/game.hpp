@@ -45,6 +45,12 @@ class Snake {
     void setBoard();
 
     vector<vector<bool>> returnGrid();
+
+    void resetGrid();
+
+    void posReset(RenderWindow *window);
+
+    void pauseSpeed();
 };
 
 #endif /* GAME_HPP_ */

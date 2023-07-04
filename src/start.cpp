@@ -1,6 +1,10 @@
 #include "start.hpp"
 
-Start::Start() {}
+Start::Start() {
+    this->reiniciomusica.openFromFile("assets/restartmusic.wav");
+    reiniciomusica.setLoop(true);
+    reiniciomusica.setVolume(25.f);
+}
 
 Start::~Start() {}
 
@@ -16,12 +20,23 @@ void Start::Draw(PlayerOne *cobra, PlayerTwo *cobra2, RenderWindow *window) {
 
 void Start::changeColor(RenderWindow *window, PlayerOne *cobra,
                         PlayerTwo *cobra2) {
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < 6; i++) {
         cobra->changeColor(window, cobra, i);
         cobra2->changeColor(window, cobra2, i);
         window->display();
         sleep(seconds(0.5f));
     }
+}
+
+void Start ::gridReset(PlayerOne *cobra, PlayerTwo *cobra2) {
+    cobra->resetGrid();
+    cobra2->resetGrid();
+}
+
+void Start::positionReset(RenderWindow *window, PlayerOne *cobra,
+                          PlayerTwo *cobra2) {
+    cobra->posReset(window);
+    cobra2->posReset(window);
 }
 
 void Start::runGame(RenderWindow *window) {
@@ -48,11 +63,21 @@ void Start::runGame(RenderWindow *window) {
                 window->clear();
                 Draw(cobra, cobra2, window);
                 window->display();
-
                 if (end == true) {
-                    controller = 4;
-
+                    count++;
+                    if (count == 3) {
+                        controller = 4;
+                        count = 0;
+                        Menu->pauseTema();
+                        reiniciomusica.play();
+                    }
                     changeColor(window, cobra, cobra2);
+
+                    gridReset(cobra, cobra2);
+                    positionReset(window, cobra, cobra2);
+
+                    cobra->pauseSpeed();
+                    cobra2->pauseSpeed();
 
                     end = false;
                 }
@@ -75,6 +100,9 @@ void Start::runGame(RenderWindow *window) {
                 break;
 
             case 3:
+
+                delete cobra;
+                delete cobra2;
                 window->close();
 
                 break;
@@ -92,6 +120,7 @@ void Start::runGame(RenderWindow *window) {
                     delete Menu;
 
                     Start *jogo = new Start;
+                    reiniciomusica.pause();
                     jogo->runGame(window);
                     delete jogo;
                 }

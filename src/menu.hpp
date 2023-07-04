@@ -21,6 +21,9 @@ class menu {
     Texture number[5];
     Music tema;
     float altura;
+    Texture reinicio;
+    RectangleShape botaorestart[2];
+    int countRestart = 0;
 
    public:
     menu(RenderWindow *window);
@@ -29,6 +32,7 @@ class menu {
     void creditos(RenderWindow *window, int *control);
     void restart(RenderWindow *window);
     void botaumRestart(RenderWindow *window, int *control, bool *reset);
+    void pauseTema();
 };
 
 #endif  // MENU_HPP_
