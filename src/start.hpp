@@ -7,15 +7,16 @@
 
 class Start {
    private:
-    RenderWindow window;
     int controller = 1;
+    bool reset = false;
+    bool end = false;
 
    public:
     Start();
     ~Start();
-    void Update(PlayerOne *cobra, PlayerTwo *cobra2);
-    void Draw(PlayerOne *cobra, PlayerTwo *cobra2);
-    void runGame();
+    void Update(PlayerOne *cobra, PlayerTwo *cobra2, RenderWindow *window);
+    void Draw(PlayerOne *cobra, PlayerTwo *cobra2, RenderWindow *window);
+    void runGame(RenderWindow *window);
 };
 
 #endif

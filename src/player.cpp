@@ -25,6 +25,10 @@ PlayerOne::PlayerOne(RenderWindow *window, Color cor) {
     if (posy == window->getSize().y) {
         posy -= bolty;
     }
+
+    startPosX = posx;
+    startPosY = posy;
+
     square.setOrigin(100 / 2, 100 / 2);
     square.setPosition(posx, posy);
 
@@ -75,6 +79,10 @@ PlayerTwo::PlayerTwo(RenderWindow *window, Color cor) {
     if (posy == window->getSize().y) {
         posy -= bolty;
     }
+
+    startPosX = posx;
+    startPosY = posy;
+
     square.setOrigin(100 / 2, 100 / 2);
     square.setPosition(posx, posy);
 
@@ -99,8 +107,8 @@ PlayerTwo::PlayerTwo(RenderWindow *window, Color cor) {
     }
 }
 
-void PlayerOne::changePosition(RenderWindow *window,
-                               vector<vector<bool>> grid) {
+void PlayerOne::changePosition(RenderWindow *window, vector<vector<bool>> grid,
+                               bool *end) {
     /*
      Retorna void
 
@@ -150,7 +158,7 @@ void PlayerOne::changePosition(RenderWindow *window,
             posy = 0;
         }
 
-        setMark(grid);
+        setMark(grid, end);
         square.setPosition(arrayPosX * boltx, arrayPosY * bolty);
 
         if (f % 2 == 0) {
@@ -170,8 +178,8 @@ void PlayerOne::changePosition(RenderWindow *window,
     }
 }
 
-void PlayerTwo::changePosition(RenderWindow *window,
-                               vector<vector<bool>> grid) {
+void PlayerTwo::changePosition(RenderWindow *window, vector<vector<bool>> grid,
+                               bool *end) {
     /*
      Retorna void
 
@@ -221,7 +229,7 @@ void PlayerTwo::changePosition(RenderWindow *window,
             posy = 0;
         }
 
-        setMark(grid);
+        setMark(grid, end);
         square.setPosition(arrayPosX * boltx, arrayPosY * bolty);
 
         if (f % 2 == 0) {

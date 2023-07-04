@@ -27,6 +27,8 @@ class menu {
     void background(RenderWindow *window);
     void botaum(RenderWindow *window, int *control);
     void creditos(RenderWindow *window, int *control);
+    void restart(RenderWindow *window);
+    void botaumRestart(RenderWindow *window, int *control, bool *reset);
 };
 
 #endif  // MENU_HPP_

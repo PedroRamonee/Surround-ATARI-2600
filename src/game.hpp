@@ -28,6 +28,8 @@ class Snake {
     int posy = 0;
     int arrayPosX = 0;
     int arrayPosY = 0;
+    int startPosX = 0;
+    int startPosY = 0;
     int boltx;
     int bolty;
     int pisk = 100;
@@ -38,7 +40,7 @@ class Snake {
    public:
     void render(RenderWindow *window);
 
-    void setMark(vector<vector<bool>> grid);
+    void setMark(vector<vector<bool>> grid, bool *end);
 
     void setBoard();
 

@@ -6,13 +6,15 @@
 class PlayerOne : public Snake {
    public:
     PlayerOne(RenderWindow *window, Color cor);
-    void changePosition(RenderWindow *window, vector<vector<bool>> grid);
+    void changePosition(RenderWindow *window, vector<vector<bool>> grid,
+                        bool *end);
 };
 
 class PlayerTwo : public Snake {
    public:
     PlayerTwo(RenderWindow *window, Color cor);
-    void changePosition(RenderWindow *window, vector<vector<bool>> grid);
+    void changePosition(RenderWindow *window, vector<vector<bool>> grid,
+                        bool *end);
 };
 
 #endif

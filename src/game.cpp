@@ -37,7 +37,7 @@ void Snake::render(RenderWindow *window) {
     window->draw(square);
 }
 
-void Snake::setMark(vector<vector<bool>> grid) {
+void Snake::setMark(vector<vector<bool>> grid, bool *end) {
     /*
       Retorna void
 
@@ -53,8 +53,13 @@ void Snake::setMark(vector<vector<bool>> grid) {
         grid[arrayPosX][arrayPosY] == false) {
         this->grid[arrayPosX][arrayPosY] = true;
     } else {
-        velx = 0;
-        vely = 0;
+        if (posx != startPosX || posy != startPosY) {
+
+            *end = true;
+            velx = 0;
+            vely = 0;
+
+        }
     }
 }
 
