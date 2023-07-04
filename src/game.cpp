@@ -7,7 +7,7 @@
 
 #include "game.hpp"
 
-void Snake::render(RenderWindow *window) {
+void Snake::render(RenderWindow *window, int a[], int b[], int counter) {
     /*
      Retorna void
 
@@ -25,8 +25,13 @@ void Snake::render(RenderWindow *window) {
 
                 if (x == 0 || x == 29 || y == 0 || y == 29) {
                     mark.setFillColor(Color(0, 255, 0));
+                } else {
+                    for (int i = 0; i <= (2 * counter); i++) {
+                        if (x == a[i] && y == b[i]) {
+                            mark.setFillColor(Color(139, 69, 19));
+                        }
+                    }
                 }
-
                 window->draw(mark);
 
                 mark.setFillColor(currentColor);
@@ -37,7 +42,7 @@ void Snake::render(RenderWindow *window) {
     window->draw(square);
 }
 
-void Snake::setMark(vector<vector<bool>> grid, bool *end) {
+void Snake::setMark(vector<vector<bool>> grid, bool *end, int *pointer) {
     /*
       Retorna void
 
@@ -55,6 +60,7 @@ void Snake::setMark(vector<vector<bool>> grid, bool *end) {
     } else {
         if (posx != startPosX || posy != startPosY) {
             *end = true;
+            *pointer = *pointer + 1;
         }
     }
 }
@@ -113,3 +119,15 @@ void Snake ::pauseSpeed() {
     velx = 0;
     vely = 0;
 }
+
+void Snake::setGrid(int x, int y, int counter) {
+   
+        grid[x][y] = true;
+    
+}
+
+size_t Snake ::returnGridSize() { return this->grid.size(); }
+
+int Snake ::returnPosY() { return posy; }
+
+int Snake::returnPosX() { return posx; }

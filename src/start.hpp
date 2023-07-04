@@ -12,6 +12,11 @@ class Start {
     bool end = false;
     int count = 0;
     Music reiniciomusica;
+    int pointer1 = 0;
+    int pointer2 = 0;
+    int x[10];
+    int y[10];
+    int counter = 1;
 
    public:
     Start();
@@ -19,10 +24,12 @@ class Start {
     void Update(PlayerOne *cobra, PlayerTwo *cobra2, RenderWindow *window);
     void Draw(PlayerOne *cobra, PlayerTwo *cobra2, RenderWindow *window);
     void runGame(RenderWindow *window);
-    void changeColor(RenderWindow *window, PlayerOne *cobra, PlayerTwo *cobra2);
+    void changeCor(RenderWindow *window, PlayerOne *cobra, PlayerTwo *cobra2);
     void gridReset(PlayerOne *cobra, PlayerTwo *cobra2);
     void positionReset(RenderWindow *window, PlayerOne *cobra,
                        PlayerTwo *cobra2);
+    void setPedra(PlayerOne *cobra, PlayerTwo *cobra2);
+    void setSpeed(PlayerOne *cobra, PlayerTwo *cobra2);
 };
 
 #endif

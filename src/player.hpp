@@ -7,16 +7,18 @@ class PlayerOne : public Snake {
    public:
     PlayerOne(RenderWindow *window, Color cor);
     void changePosition(RenderWindow *window, vector<vector<bool>> grid,
-                        bool *end);
-    void changeColor(RenderWindow *window, PlayerOne *cobra, int i);
+                        bool *end, int *pointer);
+    void changeColor(RenderWindow *window, PlayerOne *cobra, int i, int x[],
+                     int y[], int counter);
 };
 
 class PlayerTwo : public Snake {
    public:
     PlayerTwo(RenderWindow *window, Color cor);
     void changePosition(RenderWindow *window, vector<vector<bool>> grid,
-                        bool *end);
-    void changeColor(RenderWindow *window, PlayerTwo *cobra2, int i);
+                        bool *end, int *pointer);
+    void changeColor(RenderWindow *window, PlayerTwo *cobra2, int i, int x[],
+                     int y[], int counter);
 };
 
 #endif

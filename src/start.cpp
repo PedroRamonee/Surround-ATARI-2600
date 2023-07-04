@@ -9,20 +9,20 @@ Start::Start() {
 Start::~Start() {}
 
 void Start::Update(PlayerOne *cobra, PlayerTwo *cobra2, RenderWindow *window) {
-    cobra->changePosition(window, cobra2->returnGrid(), &end);
-    cobra2->changePosition(window, cobra->returnGrid(), &end);
+    cobra->changePosition(window, cobra2->returnGrid(), &end, &pointer2);
+    cobra2->changePosition(window, cobra->returnGrid(), &end, &pointer1);
 }
 
 void Start::Draw(PlayerOne *cobra, PlayerTwo *cobra2, RenderWindow *window) {
-    cobra->render(window);
-    cobra2->render(window);
+    cobra->render(window, x, y, counter);
+    cobra2->render(window, x, y, counter);
 }
 
-void Start::changeColor(RenderWindow *window, PlayerOne *cobra,
-                        PlayerTwo *cobra2) {
+void Start::changeCor(RenderWindow *window, PlayerOne *cobra,
+                      PlayerTwo *cobra2) {
     for (int i = 0; i < 6; i++) {
-        cobra->changeColor(window, cobra, i);
-        cobra2->changeColor(window, cobra2, i);
+        cobra->changeColor(window, cobra, i, x, y, counter);
+        cobra2->changeColor(window, cobra2, i, x, y, counter);
         window->display();
         sleep(seconds(0.5f));
     }
@@ -39,11 +39,35 @@ void Start::positionReset(RenderWindow *window, PlayerOne *cobra,
     cobra2->posReset(window);
 }
 
+void Start::setPedra(PlayerOne *cobra, PlayerTwo *cobra2) {
+    if (counter != 0) {
+        for (int i = 0; i <= (2 * counter); i++) {
+            int a = (rand() % (cobra->returnGridSize() - 2)) + 1;
+            int b = (rand() % (cobra->returnGridSize() - 2)) + 1;
+
+            if (a != cobra->returnPosX() && b != cobra->returnPosY() ||
+                a != cobra2->returnPosX() && b != cobra2->returnPosY()) {
+                x[i] = a;
+                y[i] = b;
+            } else {
+                x[i] = (rand() % (cobra->returnGridSize() - 2)) + 1;
+                y[i] = (rand() % (cobra->returnGridSize() - 2)) + 1;
+            }
+
+            cobra->setGrid(x[i], y[i], counter);
+            cobra2->setGrid(x[i], y[i], counter);
+        }
+    }
+}
+void Start::setSpeed(PlayerOne *cobra, PlayerTwo *cobra2) {
+    cobra->pauseSpeed();
+    cobra2->pauseSpeed();
+}
+
 void Start::runGame(RenderWindow *window) {
     Event event;
 
     menu *Menu = new menu(window);
-
     PlayerOne *cobra = new PlayerOne(window, Color::Blue);
     PlayerTwo *cobra2 = new PlayerTwo(window, Color::Red);
 
@@ -64,20 +88,19 @@ void Start::runGame(RenderWindow *window) {
                 Draw(cobra, cobra2, window);
                 window->display();
                 if (end == true) {
-                    count++;
-                    if (count == 3) {
+                    if (pointer1 == 3 || pointer2 == 3) {
                         controller = 4;
                         count = 0;
                         Menu->pauseTema();
                         reiniciomusica.play();
                     }
-                    changeColor(window, cobra, cobra2);
+                    changeCor(window, cobra, cobra2);
 
                     gridReset(cobra, cobra2);
                     positionReset(window, cobra, cobra2);
-
-                    cobra->pauseSpeed();
-                    cobra2->pauseSpeed();
+                    setPedra(cobra, cobra2);
+                    setSpeed(cobra, cobra2);
+                    counter++;
 
                     end = false;
                 }
@@ -116,8 +139,6 @@ void Start::runGame(RenderWindow *window) {
                 if (reset == true) {
                     delete cobra;
                     delete cobra2;
-
-                    delete Menu;
 
                     Start *jogo = new Start;
                     reiniciomusica.pause();
