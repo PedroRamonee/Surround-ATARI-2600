@@ -183,19 +183,6 @@ void menu::botaumRestart(RenderWindow *window, int *control, bool *reset) {
             case 0:
                 *control = 0;
                 tema.pause();
-                start.play();
-                start.setVolume(altura);
-                for (int i = 0; i < 5; i++) {
-                    Sprite numero;
-                    numero.setTexture(number[i]);
-                    window->draw(numero);
-                    window->display();
-                    sleep(seconds(1.0f));
-                }
-                tema.play();
-                tema.setLoop(true);
-                tema.setVolume(altura);
-
                 *reset = true;
 
                 break;

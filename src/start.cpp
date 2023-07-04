@@ -75,6 +75,7 @@ void Start::runGame(RenderWindow *window) {
                 if (reset == true) {
                     delete cobra;
                     delete cobra2;
+
                     delete Menu;
 
                     Start *jogo = new Start;
