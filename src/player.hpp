@@ -8,6 +8,7 @@ class PlayerOne : public Snake {
     PlayerOne(RenderWindow *window, Color cor);
     void changePosition(RenderWindow *window, vector<vector<bool>> grid,
                         bool *end);
+    void changeColor(RenderWindow *window, PlayerOne *cobra, int i);
 };
 
 class PlayerTwo : public Snake {
@@ -15,6 +16,7 @@ class PlayerTwo : public Snake {
     PlayerTwo(RenderWindow *window, Color cor);
     void changePosition(RenderWindow *window, vector<vector<bool>> grid,
                         bool *end);
+    void changeColor(RenderWindow *window, PlayerTwo *cobra2, int i);
 };
 
 #endif

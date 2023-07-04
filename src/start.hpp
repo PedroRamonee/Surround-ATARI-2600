@@ -17,6 +17,7 @@ class Start {
     void Update(PlayerOne *cobra, PlayerTwo *cobra2, RenderWindow *window);
     void Draw(PlayerOne *cobra, PlayerTwo *cobra2, RenderWindow *window);
     void runGame(RenderWindow *window);
+    void changeColor(RenderWindow *window, PlayerOne *cobra, PlayerTwo *cobra2);
 };
 
 #endif

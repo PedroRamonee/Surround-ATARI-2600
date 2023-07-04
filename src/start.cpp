@@ -14,6 +14,16 @@ void Start::Draw(PlayerOne *cobra, PlayerTwo *cobra2, RenderWindow *window) {
     cobra2->render(window);
 }
 
+void Start::changeColor(RenderWindow *window, PlayerOne *cobra,
+                        PlayerTwo *cobra2) {
+    for (int i = 0; i < 8; i++) {
+        cobra->changeColor(window, cobra, i);
+        cobra2->changeColor(window, cobra2, i);
+        window->display();
+        sleep(seconds(0.5f));
+    }
+}
+
 void Start::runGame(RenderWindow *window) {
     Event event;
 
@@ -41,6 +51,9 @@ void Start::runGame(RenderWindow *window) {
 
                 if (end == true) {
                     controller = 4;
+
+                    changeColor(window, cobra, cobra2);
+
                     end = false;
                 }
 
