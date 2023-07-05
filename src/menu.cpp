@@ -167,7 +167,7 @@ void menu::botaumRestart(RenderWindow *window, int *control, bool *reset) {
         }
         if (countRestart == 0) {
             botaorestart[0].setSize(Vector2f(500, 75));
-            botaorestart[0].setPosition(Vector2f(200, 440));
+            botaorestart[0].setPosition(Vector2f(200, 443));
             botaorestart[0].setFillColor(Color(0, 0, 0, 0));
             botaorestart[0].setOutlineColor(Color(255, 255, 255));
             botaorestart[0].setOutlineThickness(10);
@@ -175,7 +175,7 @@ void menu::botaumRestart(RenderWindow *window, int *control, bool *reset) {
         }
         if (countRestart == 1) {
             botaorestart[1].setSize(Vector2f(500, 75));
-            botaorestart[1].setPosition(Vector2f(200, 650));
+            botaorestart[1].setPosition(Vector2f(200, 647));
             botaorestart[1].setFillColor(Color(0, 0, 0, 0));
             botaorestart[1].setOutlineColor(Color(255, 255, 255));
             botaorestart[1].setOutlineThickness(10);

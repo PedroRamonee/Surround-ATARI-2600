@@ -7,7 +7,8 @@
 
 #include "game.hpp"
 
-void Snake::render(RenderWindow *window, int a[], int b[], int counter) {
+void Snake::render(RenderWindow *window, int a[], int b[], int counter,
+                   int pointer1, int pointer2) {
     /*
      Retorna void
 
@@ -25,7 +26,29 @@ void Snake::render(RenderWindow *window, int a[], int b[], int counter) {
 
                 if (x == 0 || x == 29 || y == 0 || y == 29) {
                     mark.setFillColor(Color(0, 255, 0));
-                } else {
+                    if (x == 13 && y == 0) {
+                        if (pointer1 == 1 || pointer1 == 2) {
+                            mark.setFillColor(Color::Blue);
+                        }
+                    }
+                    if (x == 14 && y == 0) {
+                        if (pointer1 == 2) {
+                            mark.setFillColor(Color::Blue);
+                        }
+                    }
+                    if (x == 16 && y == 0) {
+                        if (pointer2 == 1 || pointer2 == 2) {
+                            mark.setFillColor(Color::Red);
+                        }
+                    }
+                    if (x == 15 && y == 0) {
+                        if (pointer2 == 2) {
+                            mark.setFillColor(Color::Red);
+                        }
+                    }
+                }
+
+                else {
                     for (int i = 0; i <= (2 * counter); i++) {
                         if (x == a[i] && y == b[i]) {
                             mark.setFillColor(Color(139, 69, 19));

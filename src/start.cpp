@@ -20,8 +20,8 @@ void Start::Update(PlayerOne *cobra, PlayerTwo *cobra2, RenderWindow *window) {
 }
 
 void Start::Draw(PlayerOne *cobra, PlayerTwo *cobra2, RenderWindow *window) {
-    cobra->render(window, x, y, counter);
-    cobra2->render(window, x, y, counter);
+    cobra->render(window, x, y, counter, pointer1, pointer2);
+    cobra2->render(window, x, y, counter, pointer1, pointer2);
 }
 
 void Start::changeCor(RenderWindow *window, PlayerOne *cobra,
@@ -29,8 +29,9 @@ void Start::changeCor(RenderWindow *window, PlayerOne *cobra,
     colisaosound.setLoop(true);
     colisaosound.play();
     for (int i = 0; i < 8; i++) {
-        cobra->changeColor(window, cobra, i, x, y, counter);
-        cobra2->changeColor(window, cobra2, i, x, y, counter);
+        cobra->changeColor(window, cobra, i, x, y, counter, pointer1, pointer2);
+        cobra2->changeColor(window, cobra2, i, x, y, counter, pointer1,
+                            pointer2);
         window->display();
         sleep(seconds(0.3f));
     }

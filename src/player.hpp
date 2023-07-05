@@ -9,7 +9,7 @@ class PlayerOne : public Snake {
     void changePosition(RenderWindow *window, vector<vector<bool>> grid,
                         bool *end, int *pointer);
     void changeColor(RenderWindow *window, PlayerOne *cobra, int i, int x[],
-                     int y[], int counter);
+                     int y[], int counter, int pointer1, int pointer2);
 };
 
 class PlayerTwo : public Snake {
@@ -18,7 +18,7 @@ class PlayerTwo : public Snake {
     void changePosition(RenderWindow *window, vector<vector<bool>> grid,
                         bool *end, int *pointer);
     void changeColor(RenderWindow *window, PlayerTwo *cobra2, int i, int x[],
-                     int y[], int counter);
+                     int y[], int counter, int pointer1, int pointer2);
 };
 
 #endif

@@ -250,7 +250,8 @@ void PlayerTwo::changePosition(RenderWindow *window, vector<vector<bool>> grid,
 }
 
 void PlayerTwo::changeColor(RenderWindow *window, PlayerTwo *cobra2, int i,
-                            int x[], int y[], int counter) {
+                            int x[], int y[], int counter, int pointer1,
+                            int pointer2) {
     if (i % 2 == 0) {
         pisk = 10;
     } else {
@@ -258,11 +259,12 @@ void PlayerTwo::changeColor(RenderWindow *window, PlayerTwo *cobra2, int i,
     }
     square.setFillColor(Color(pisk, 10, 10));
     mark.setFillColor(Color(pisk, 10, 10));
-    cobra2->render(window, x, y, counter);
+    cobra2->render(window, x, y, counter, pointer1, pointer2);
 }
 
 void PlayerOne::changeColor(RenderWindow *window, PlayerOne *cobra, int i,
-                            int x[], int y[], int counter) {
+                            int x[], int y[], int counter, int pointer1,
+                            int pointer2) {
     if (i % 2 == 0) {
         pisk = 10;
     } else {
@@ -270,5 +272,5 @@ void PlayerOne::changeColor(RenderWindow *window, PlayerOne *cobra, int i,
     }
     square.setFillColor(Color(10, 10, pisk));
     mark.setFillColor(Color(10, 10, pisk));
-    cobra->render(window, x, y, counter);
+    cobra->render(window, x, y, counter, pointer1, pointer2);
 }

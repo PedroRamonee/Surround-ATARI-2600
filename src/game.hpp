@@ -39,7 +39,8 @@ class Snake {
     Clock clock;
 
    public:
-    void render(RenderWindow *window, int a[], int b[], int counter);
+    void render(RenderWindow *window, int a[], int b[], int counter,
+                int pointer1, int pointer2);
 
     void setMark(vector<vector<bool>> grid, bool *end, int *pointer);
 
