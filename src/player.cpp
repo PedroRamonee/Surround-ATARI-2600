@@ -161,15 +161,15 @@ void PlayerOne::changePosition(RenderWindow *window, vector<vector<bool>> grid,
         setMark(grid, end, pointer);
         square.setPosition(arrayPosX * boltx, arrayPosY * bolty);
 
-        if (f % 2 == 0) {
+        if (countColor % 2 == 0) {
             pisk = pisk + 5;
             if (pisk >= 255) {
-                f++;
+                countColor++;
             }
         } else {
             pisk = pisk - 5;
             if (pisk <= 0) {
-                f++;
+                countColor++;
             }
         }
 
@@ -232,15 +232,15 @@ void PlayerTwo::changePosition(RenderWindow *window, vector<vector<bool>> grid,
         setMark(grid, end, pointer);
         square.setPosition(arrayPosX * boltx, arrayPosY * bolty);
 
-        if (f % 2 == 0) {
+        if (countColor % 2 == 0) {
             pisk = pisk + 5;
             if (pisk >= 255) {
-                f++;
+                countColor++;
             }
         } else {
             pisk = pisk - 5;
             if (pisk <= 0) {
-                f++;
+                countColor++;
             }
         }
 
