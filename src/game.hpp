@@ -33,7 +33,7 @@ class Snake {
     int boltx;
     int bolty;
     int pisk = 100;
-    int f = 0;
+    int countColor = 0;
     vector<vector<bool>> grid;
 
     Clock clock;
@@ -54,7 +54,7 @@ class Snake {
 
     void pauseSpeed();
 
-    void setGrid(int x, int y, int counter);
+    void setGrid(int x, int y);
 
     size_t returnGridSize();
 
