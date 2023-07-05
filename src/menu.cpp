@@ -7,11 +7,11 @@ menu::menu(RenderWindow *window) {
      - Carrega arquivos de música de music/start
      - Carrega a fonte*/
 
-    this->altura = 20;
+    this->altura = 100;
 
     this->inicio.openFromFile("assets/inicio.wav");
     inicio.play();
-    inicio.setVolume(altura + 20);
+    inicio.setVolume(altura);
 
     this->marca[0].loadFromFile("assets/mpl1.jpg");
     this->marca[1].loadFromFile("assets/mpl2.jpg");
@@ -41,7 +41,7 @@ menu::menu(RenderWindow *window) {
 
     this->music.openFromFile("assets/menumusic.wav");
     music.play();
-    music.setVolume(altura + 5);
+    music.setVolume(altura-80);
     music.setLoop(true);
 
     this->credito.loadFromFile("assets/creditos.jpg");
@@ -118,7 +118,7 @@ void menu::botaum(RenderWindow *window, int *control) {
                 *control = 0;
                 music.pause();
                 start.play();
-                start.setVolume(110.f);
+                start.setVolume(altura);
                 for (int i = 5; i >= 0; i--) {
                     Sprite numero;
                     numero.setTexture(number[i]);
@@ -128,7 +128,7 @@ void menu::botaum(RenderWindow *window, int *control) {
                 }
                 tema.play();
                 tema.setLoop(true);
-                tema.setVolume(20.f);
+                tema.setVolume(altura - 80);
                 break;
             case 1:
                 *control = 2;
@@ -175,7 +175,7 @@ void menu::botaumRestart(RenderWindow *window, int *control, bool *reset) {
         }
         if (countRestart == 1) {
             botaorestart[1].setSize(Vector2f(500, 75));
-            botaorestart[1].setPosition(Vector2f(200, 647));
+            botaorestart[1].setPosition(Vector2f(200, 645));
             botaorestart[1].setFillColor(Color(0, 0, 0, 0));
             botaorestart[1].setOutlineColor(Color(255, 255, 255));
             botaorestart[1].setOutlineThickness(10);

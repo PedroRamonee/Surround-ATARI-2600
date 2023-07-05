@@ -54,7 +54,7 @@ class Snake {
 
     void pauseSpeed();
 
-    void setGrid(int x, int y, int counter);
+    void setGrid(int x, int y);
 
     size_t returnGridSize();
 

@@ -3,7 +3,7 @@
 Start::Start() {
     this->reiniciomusica.openFromFile("assets/restartmusic.wav");
     reiniciomusica.setLoop(true);
-    reiniciomusica.setVolume(25.f);
+    reiniciomusica.setVolume(20.f);
     this->colisaosound.openFromFile("assets/somDeColisao.wav");
     colisaosound.setVolume(100.f);
     this->knocout.openFromFile("assets/knocout.wav");
@@ -64,8 +64,8 @@ void Start::setPedra(PlayerOne *cobra, PlayerTwo *cobra2) {
                 y[i] = (rand() % (cobra->returnGridSize() - 2)) + 1;
             }
 
-            cobra->setGrid(x[i], y[i], counter);
-            cobra2->setGrid(x[i], y[i], counter);
+            cobra->setGrid(x[i], y[i]);
+            cobra2->setGrid(x[i], y[i]);
         }
     }
 }
@@ -167,6 +167,7 @@ void Start::runGame(RenderWindow *window) {
                 if (reset == true) {
                     delete cobra;
                     delete cobra2;
+                    delete Menu;
 
                     Start *jogo = new Start;
                     reiniciomusica.pause();

@@ -143,7 +143,7 @@ void Snake ::pauseSpeed() {
     vely = 0;
 }
 
-void Snake::setGrid(int x, int y, int counter) { grid[x][y] = true; }
+void Snake::setGrid(int x, int y) { grid[x][y] = true; }
 
 size_t Snake ::returnGridSize() { return this->grid.size(); }
 
