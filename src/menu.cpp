@@ -11,17 +11,22 @@ menu::menu(RenderWindow *window) {
 
     this->inicio.openFromFile("assets/inicio.wav");
     inicio.play();
-    inicio.setVolume(altura + 5);
+    inicio.setVolume(altura + 20);
 
-    this->marca.loadFromFile("assets/marca.jpg");
-    Sprite spritemarca;
-    spritemarca.setTexture(marca);
-    window->draw(spritemarca);
-    window->display();
-
-    sleep(Time(seconds(1.5)));
-
-    this->icon.loadFromFile("assets/icone.png");
+    this->marca[0].loadFromFile("assets/mpl1.jpg");
+    this->marca[1].loadFromFile("assets/mpl2.jpg");
+    this->marca[2].loadFromFile("assets/mpl3.jpg");
+    this->marca[3].loadFromFile("assets/mpl4.jpg");
+    this->marca[4].loadFromFile("assets/mpl5.jpg");
+    this->marca[5].loadFromFile("assets/mpl6.jpg");
+    for (int i = 0; i < 6; i++) {
+        Sprite marquinha;
+        marquinha.setTexture(marca[i]);
+        window->draw(marquinha);
+        window->display();
+        sleep(seconds(0.32f));
+    }
+    sleep(Time(seconds(2.5f)));
 
     this->backgroundd.loadFromFile("assets/background.jpg");
 
@@ -85,7 +90,7 @@ void menu::botaum(RenderWindow *window, int *control) {
     }
     if (count == 0) {
         botao[0].setSize(Vector2f(500, 75));
-        botao[0].setPosition(Vector2f(200, 395));
+        botao[0].setPosition(Vector2f(200, 405));
         botao[0].setFillColor(Color(0, 0, 0, 0));
         botao[0].setOutlineColor(Color(255, 255, 255));
         botao[0].setOutlineThickness(10);
@@ -101,7 +106,7 @@ void menu::botaum(RenderWindow *window, int *control) {
     }
     if (count == 2) {
         botao[2].setSize(Vector2f(500, 75));
-        botao[2].setPosition(Vector2f(200, 650));
+        botao[2].setPosition(Vector2f(200, 640));
         botao[2].setFillColor(Color(0, 0, 0, 0));
         botao[2].setOutlineColor(Color(255, 255, 255));
         botao[2].setOutlineThickness(10);
@@ -113,17 +118,17 @@ void menu::botaum(RenderWindow *window, int *control) {
                 *control = 0;
                 music.pause();
                 start.play();
-                start.setVolume(altura);
-                for (int i = 0; i < 5; i++) {
+                start.setVolume(110.f);
+                for (int i = 5; i >= 0; i--) {
                     Sprite numero;
                     numero.setTexture(number[i]);
                     window->draw(numero);
                     window->display();
-                    sleep(seconds(1.0f));
+                    sleep(seconds(0.6f));
                 }
                 tema.play();
                 tema.setLoop(true);
-                tema.setVolume(altura + 5);
+                tema.setVolume(20.f);
                 break;
             case 1:
                 *control = 2;
@@ -162,7 +167,7 @@ void menu::botaumRestart(RenderWindow *window, int *control, bool *reset) {
         }
         if (countRestart == 0) {
             botaorestart[0].setSize(Vector2f(500, 75));
-            botaorestart[0].setPosition(Vector2f(200, 450));
+            botaorestart[0].setPosition(Vector2f(200, 440));
             botaorestart[0].setFillColor(Color(0, 0, 0, 0));
             botaorestart[0].setOutlineColor(Color(255, 255, 255));
             botaorestart[0].setOutlineThickness(10);
@@ -170,7 +175,7 @@ void menu::botaumRestart(RenderWindow *window, int *control, bool *reset) {
         }
         if (countRestart == 1) {
             botaorestart[1].setSize(Vector2f(500, 75));
-            botaorestart[1].setPosition(Vector2f(200, 640));
+            botaorestart[1].setPosition(Vector2f(200, 650));
             botaorestart[1].setFillColor(Color(0, 0, 0, 0));
             botaorestart[1].setOutlineColor(Color(255, 255, 255));
             botaorestart[1].setOutlineThickness(10);

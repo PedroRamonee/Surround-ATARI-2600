@@ -6,14 +6,13 @@
 
 class menu {
    private:
-    Image icon;
     Texture backgroundd;
     float positionx = 0;
     float positiony = 0;
     Music start;
     Music music;
     Music inicio;
-    Texture marca;
+    Texture marca[6];
     RectangleShape botao[3];
     int count = 0;
     Clock relogio;

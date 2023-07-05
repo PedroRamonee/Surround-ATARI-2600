@@ -17,6 +17,9 @@ class Start {
     int x[10];
     int y[10];
     int counter = 1;
+    Music colisaosound;
+    Texture ganha[2];
+    Music knocout;
 
    public:
     Start();

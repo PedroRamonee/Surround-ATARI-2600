@@ -4,6 +4,12 @@ Start::Start() {
     this->reiniciomusica.openFromFile("assets/restartmusic.wav");
     reiniciomusica.setLoop(true);
     reiniciomusica.setVolume(25.f);
+    this->colisaosound.openFromFile("assets/somDeColisao.wav");
+    colisaosound.setVolume(100.f);
+    this->knocout.openFromFile("assets/knocout.wav");
+    knocout.setVolume(100.f);
+    this->ganha[0].loadFromFile("assets/player1.jpg");
+    this->ganha[1].loadFromFile("assets/player2.jpg");
 }
 
 Start::~Start() {}
@@ -20,12 +26,15 @@ void Start::Draw(PlayerOne *cobra, PlayerTwo *cobra2, RenderWindow *window) {
 
 void Start::changeCor(RenderWindow *window, PlayerOne *cobra,
                       PlayerTwo *cobra2) {
-    for (int i = 0; i < 6; i++) {
+    colisaosound.setLoop(true);
+    colisaosound.play();
+    for (int i = 0; i < 8; i++) {
         cobra->changeColor(window, cobra, i, x, y, counter);
         cobra2->changeColor(window, cobra2, i, x, y, counter);
         window->display();
-        sleep(seconds(0.5f));
+        sleep(seconds(0.3f));
     }
+    colisaosound.stop();
 }
 
 void Start ::gridReset(PlayerOne *cobra, PlayerTwo *cobra2) {
@@ -92,16 +101,34 @@ void Start::runGame(RenderWindow *window) {
                         controller = 4;
                         count = 0;
                         Menu->pauseTema();
+                        if (pointer1 == 3) {
+                            window->clear();
+                            Sprite sprite;
+                            sprite.setTexture(ganha[0]);
+                            knocout.play();
+                            window->draw(sprite);
+                            window->display();
+                            sleep(seconds(2.0f));
+                        }
+                        if (pointer2 == 3) {
+                            window->clear();
+                            Sprite sprite;
+                            sprite.setTexture(ganha[1]);
+                            knocout.play();
+                            window->draw(sprite);
+                            window->display();
+                            sleep(seconds(2.0f));
+                        }
                         reiniciomusica.play();
+                    } else {
+                        changeCor(window, cobra, cobra2);
+
+                        gridReset(cobra, cobra2);
+                        positionReset(window, cobra, cobra2);
+                        setPedra(cobra, cobra2);
+                        setSpeed(cobra, cobra2);
+                        counter++;
                     }
-                    changeCor(window, cobra, cobra2);
-
-                    gridReset(cobra, cobra2);
-                    positionReset(window, cobra, cobra2);
-                    setPedra(cobra, cobra2);
-                    setSpeed(cobra, cobra2);
-                    counter++;
-
                     end = false;
                 }
 
